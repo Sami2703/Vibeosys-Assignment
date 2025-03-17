@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 # Database setup
-URL_DATABASE = "mysql+mysqlconnector://root:root@localhost:3306/product_db"
+URL_DATABASE = "mysql+pymysql://root:root@localhost:3306/product_db"
 
 engine = create_engine(URL_DATABASE)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -41,7 +41,7 @@ class Product(Base):
     productimage_url = Column(Text)
     sku = Column(String(100), unique=True, nullable=False)
     unit_of_measure = Column(Enum(UnitMeasure), nullable=False)
-    lead_time = Column(Integer)
+    lead_time = Column(Integer, nullable=False)  #in days
     created_date = Column(DateTime, default=datetime.utcnow)
     updated_date = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

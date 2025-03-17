@@ -4,6 +4,7 @@ from database import Product, SessionLocal
 from schemas import ProductCreate, ProductUpdate, Product
 from typing import List
 
+#Initialize FastAPI app
 app = FastAPI()
 
 # Dependency to get the database session
